@@ -336,3 +336,127 @@
 //     );
 //   }
 // } 
+
+
+//////////////////////////////// 7th program ---> shared_preferences
+
+
+// import 'package:flutter/material.dart';
+// import 'package:initial_flutter_project/listView.dart';
+// import 'package:initial_flutter_project/screen_1.dart';
+// import 'package:initial_flutter_project/screen_2.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+
+// main() async {
+//   runApp(MyApp()); 
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         primarySwatch: Colors.amber,
+//       ),
+//       home: ScreenOne(),
+//       // routes: {
+//       //   'screen_1':(context) {
+//       //     return ScreenOne();
+//       //   },
+//       //   'screen_2':(context) {
+//       //     return ScreenTwo();
+//       //   }
+//       // },
+//     );
+//   }
+// }
+
+
+// import 'dart:ffi';
+
+// import 'package:flutter/material.dart';
+// import 'package:initial_flutter_project/screen_2.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// class ScreenOne extends StatelessWidget {
+//   ScreenOne({super.key});
+
+//   final _textController = TextEditingController();
+
+//   @override
+//   Widget build(BuildContext context) {
+//         getSavedData(context);
+//     return Scaffold(
+//       body: SafeArea(
+//           child: Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: Column(
+//           children: [
+//             TextFormField(
+//               controller: _textController,
+//             ),
+//             ElevatedButton(
+//                 onPressed: () {
+//                   saveDataToStorage();
+//                 },
+//                 child: Text('saved Value'))
+//           ],
+//         ),
+//       )),
+//     );
+//   }
+
+//   Future<void> saveDataToStorage() async {
+//     print(_textController.text);
+
+//     // shared perference
+
+//     final sharedPrefs = await SharedPreferences.getInstance();
+
+//     await sharedPrefs.setString('saved_value', _textController.text);
+//   }
+
+  
+// Future<void> getSavedData(BuildContext context) async{
+//   final SharedPrefs = await SharedPreferences.getInstance();
+//   final savedValue = SharedPrefs.getString('saved_value');
+//   if(savedValue != null){
+//     Navigator.of(context).push(MaterialPageRoute(builder: (cxt) => ScreenTwo() ));
+//   }
+// }
+// }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:initial_flutter_project/screen_1.dart';
+
+// class ScreenTwo extends StatelessWidget {
+//   const ScreenTwo({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       // appBar: AppBar(
+//       //   backgroundColor: Colors.pink,
+//       //   title: Text(name),
+//       // ),
+//       body: SafeArea(
+//         child: Center(
+//           child: Column(
+//             children: [
+//               // Text('Screen 2'),
+//               // ElevatedButton(
+//               //   onPressed: () {
+//               //     Navigator.of(context).pop();
+//               //   },
+//               Text('Value Found'),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

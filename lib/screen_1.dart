@@ -1,41 +1,53 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:initial_flutter_project/screen_2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenOne extends StatelessWidget {
-  const ScreenOne({super.key});
+  ScreenOne({super.key});
+
+  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+        getSavedData(context);
     return Scaffold(
       body: SafeArea(
-        child: ListView.separated(
-          itemBuilder: (ctx, index) {
-            return ListTile(
-              title: Text('PERSON $index'),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (ctx) {
-                      return ScreenTwo(name: 'PERSON $index');
-                    },
-                  ),
-                );
-              },
-              subtitle: Text('Message $index'),
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blueAccent[100],
-                backgroundImage: AssetImage('assets/images/orange.jpg'),
-              ),
-              trailing: Text('1$index:00 PM'),
-            );
-          },
-          separatorBuilder: (ctx, index) {
-            return Divider();
-          },
-          itemCount: 30,
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TextFormField(
+              controller: _textController,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  saveDataToStorage();
+                },
+                child: Text('saved Value'))
+          ],
         ),
-      ),
+      )),
     );
   }
+
+  Future<void> saveDataToStorage() async {
+    print(_textController.text);
+
+    // shared perference
+
+    final sharedPrefs = await SharedPreferences.getInstance();
+
+    await sharedPrefs.setString('saved_value', _textController.text);
+  }
+
+  
+Future<void> getSavedData(BuildContext context) async{
+  final SharedPrefs = await SharedPreferences.getInstance();
+  final savedValue = SharedPrefs.getString('saved_value');
+  if(savedValue != null){
+    Navigator.of(context).push(MaterialPageRoute(builder: (cxt) => ScreenTwo() ));
+  }
+}
 }

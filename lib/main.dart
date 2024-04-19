@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:initial_flutter_project/listView.dart';
 import 'package:initial_flutter_project/screen_1.dart';
 import 'package:initial_flutter_project/screen_2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
+
+main() async {
+  runApp(MyApp()); 
 }
 
 class MyApp extends StatelessWidget {
