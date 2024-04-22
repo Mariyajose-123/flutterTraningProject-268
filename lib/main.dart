@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:initial_flutter_project/listView.dart';
-import 'package:initial_flutter_project/screen_1.dart';
-import 'package:initial_flutter_project/screen_2.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:initial_flutter_project/Screens/splash.dart';
 
-
-main() async {
-  runApp(MyApp()); 
+const SAVE_KEY_NAME = 'UserLoggIn';
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,18 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Login Sample',
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: ScreenOne(),
-      // routes: {
-      //   'screen_1':(context) {
-      //     return ScreenOne();
-      //   },
-      //   'screen_2':(context) {
-      //     return ScreenTwo();
-      //   }
-      // },
+      home: ScreenSplash(),
     );
   }
 }
