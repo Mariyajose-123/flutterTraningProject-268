@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:initial_flutter_project/Screens/splash.dart';
+import 'package:flutter/widgets.dart';
+import 'package:initial_flutter_project/BottomSheet/bottomSheet_Screen.dart';
 
-const SAVE_KEY_NAME = 'UserLoggIn';
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Sample',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: ScreenSplash(),
+      home: ScreenHomeBottomSheet(),
     );
   }
 }
